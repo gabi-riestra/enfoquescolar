@@ -1,0 +1,311 @@
+============================================================
+ ENFOQUE ESCOLAR · VERSIÓN WEB (PWA)
+ Guía paso a paso, sin tecnicismos
+============================================================
+
+Esta carpeta contiene la versión web de Enfoque Escolar. Es la misma
+aplicación que la versión de escritorio, pero funciona dentro del
+navegador y se puede instalar como una app en Windows, Android, iPhone
+y iPad.
+
+Todo se guarda en el propio dispositivo (en el almacenamiento del
+navegador). No hay cuentas, contraseñas ni conexión a internet. Una vez
+que la app se abre por primera vez, funciona sin conexión.
+
+IMPORTANTE: los datos de la versión web y los de la versión de
+escritorio son independientes. Para pasar tus datos actuales a la web,
+sigue el apartado «Importar los datos de la versión de escritorio».
+
+------------------------------------------------------------
+ ARCHIVOS QUE HAY EN ESTA CARPETA
+------------------------------------------------------------
+
+  index.html              La aplicación.
+  styles.css              El diseño (tema oscuro y tema amanecer).
+  app.js                  La lógica: entregas, horarios, pomodoro, etc.
+  manifest.webmanifest    Datos para instalar la app.
+  sw.js                   Permite que funcione sin conexión.
+  icons\                  Los iconos de la app.
+  servir.ps1              Servidor local para probar en Windows.
+  LEEME-WEB.txt           Esta guía.
+
+No borres ni muevas estos archivos entre sí: la app los necesita todos
+en la misma carpeta.
+
+============================================================
+ 1. ABRIRLA EN WINDOWS (PRUEBA RÁPIDA)
+============================================================
+
+La forma recomendada es usar el servidor local incluido. Así la app
+puede instalarse y funcionar sin conexión.
+
+  1. Abre la carpeta EnfoqueEscolarWeb.
+  2. Haz clic derecho dentro de la carpeta y elige:
+     «Abrir en Terminal» o «Abrir ventana de PowerShell aquí».
+  3. Escribe este comando y pulsa Enter:
+
+         powershell -ExecutionPolicy Bypass -File .\servir.ps1
+
+  4. Se abrirá tu navegador en:
+
+         http://localhost:8080
+
+  5. Deja la ventana de PowerShell abierta mientras usas la app.
+     Para cerrar el servidor, pulsa Ctrl+C en esa ventana.
+
+También puedes hacer doble clic en index.html, pero NO es lo
+recomendado: al abrirse como archivo (file://) la app funciona, pero
+el navegador no permite instalarla ni guardar el modo sin conexión.
+
+------------------------------------------------------------
+ INSTALARLA EN WINDOWS (Chrome o Edge)
+------------------------------------------------------------
+
+  1. Abre la app con el servidor local (http://localhost:8080).
+  2. En Chrome o Edge, busca el icono «Instalar» en la barra de
+     direcciones (un pequeño monitor con una flecha), o pulsa el botón
+     «Instalar Enfoque Escolar» dentro de Ajustes.
+  3. Confirma «Instalar».
+  4. Se abrirá en su propia ventana, como cualquier otro programa.
+     Puedes anclarla a la barra de tareas o al menú Inicio.
+
+============================================================
+ 2. INSTALARLA EN ANDROID
+============================================================
+
+Para instalar en Android necesitas abrir la app desde una dirección
+https:// (no vale file:// ni localhost del ordenador). Publica primero
+la carpeta como se explica en el apartado 3.
+
+  1. Abre la dirección https:// de tu app en Chrome.
+  2. Toca el menú de tres puntos (⋮), arriba a la derecha.
+  3. Elige «Instalar aplicación» o «Añadir a pantalla de inicio».
+  4. Confirma. Aparecerá un icono en tu pantalla de inicio.
+
+============================================================
+ 3. PUBLICARLA GRATIS PARA iPhone, iPad Y ANDROID
+============================================================
+
+iPhone y iPad solo permiten instalar apps web si se abren desde una
+dirección https:// en Safari. Publicar la carpeta es gratis y no
+requiere saber programar. La opción más sencilla es Netlify Drop.
+
+------------------------------------------------------------
+ OPCIÓN A · NETLIFY DROP (la más fácil)
+------------------------------------------------------------
+
+  1. Entra en:  https://app.netlify.com/drop
+  2. Si te pide iniciar sesión, crea una cuenta gratuita (con Google,
+     GitHub o correo). No se cobra nada.
+  3. Arrastra la carpeta EnfoqueEscolarWeb completa a la zona que dice
+     «Drag and drop your site output folder here».
+  4. Espera unos segundos. Netlify te dará una dirección parecida a:
+
+         https://nombre-al-azar.netlify.app
+
+  5. Abre esa dirección en el navegador. ¡Ya está publicada!
+     Esa es la dirección que usarás en el iPhone, el iPad, Android y
+     cualquier otro dispositivo.
+
+  Nota: guarda esa dirección. Si cambias archivos, vuelve a arrastrar
+  la carpeta para actualizarla.
+
+------------------------------------------------------------
+ OPCIÓN B · GITHUB PAGES (alternativa)
+------------------------------------------------------------
+
+  1. Crea una cuenta gratuita en https://github.com
+  2. Crea un repositorio nuevo (puede ser privado o público).
+  3. Sube todos los archivos de EnfoqueEscolarWeb a la raíz del
+     repositorio.
+  4. Entra en Settings → Pages.
+  5. En «Branch» elige main y la carpeta /root. Guarda.
+  6. Espera un minuto. GitHub te dará una dirección parecida a:
+
+         https://tu-usuario.github.io/tu-repositorio/
+
+  7. Abre esa dirección. La app ya está publicada.
+
+------------------------------------------------------------
+ INSTALARLA EN iPhone O iPad (Safari)
+------------------------------------------------------------
+
+  1. Abre la dirección https:// de tu app en Safari.
+     (Debe ser Safari, no Chrome ni el navegador de Instagram.)
+  2. Toca el botón Compartir: el cuadrado con una flecha hacia arriba.
+  3. Desliza y elige «Añadir a pantalla de inicio».
+  4. Escribe el nombre «Enfoque» y toca «Añadir».
+  5. Aparecerá el icono en tu pantalla de inicio. Ábrela desde ahí:
+     se verá a pantalla completa, como una app normal.
+
+============================================================
+ 4. IMPORTAR LOS DATOS DE LA VERSIÓN DE ESCRITORIO
+============================================================
+
+La versión web puede leer el mismo archivo datos.json que usa la
+versión de escritorio. Así conservas tus entregas, horarios,
+actividades, notas, sesiones y ajustes.
+
+------------------------------------------------------------
+ PASO 1 · LOCALIZAR EL ARCHIVO DEL ESCRITORIO
+------------------------------------------------------------
+
+El archivo se llama datos.json y está en:
+
+    C:\Users\gabri\AppData\Local\EnfoqueEscolar\datos.json
+
+Para llegar rápido:
+
+  1. Pulsa Windows + R.
+  2. Escribe:  %LOCALAPPDATA%\EnfoqueEscolar
+  3. Pulsa Enter. Se abrirá la carpeta.
+  4. Verás el archivo datos.json.
+
+Consejo: haz una copia de seguridad de ese archivo antes de tocar
+nada (cópialo a Documentos o a un USB).
+
+------------------------------------------------------------
+ PASO 2 · IMPORTARLO EN LA APP WEB
+------------------------------------------------------------
+
+  1. Abre Enfoque Escolar en el navegador.
+  2. Entra en «Ajustes» (última opción del menú).
+  3. En la tarjeta «Tus datos», pulsa «Importar datos».
+  4. Selecciona el archivo datos.json.
+  5. La app te mostrará cuántas entregas, horarios, actividades y notas
+     va a importar. Pulsa «Importar y reemplazar».
+  6. Listo. Revisa «Entregas», «Horarios» y «Pendientes».
+
+La importación reemplaza los datos que hubiera en la versión web. Si
+ya habías creado algo allí, exporta primero un respaldo.
+
+------------------------------------------------------------
+ IMPORTANTE · CADA DISPOSITIVO TIENE SUS PROPIOS DATOS
+------------------------------------------------------------
+
+Los datos NO se sincronizan solos entre el ordenador y el teléfono.
+Cada navegador guarda los suyos. Si quieres los mismos datos en varios
+dispositivos:
+
+  1. En el dispositivo que tiene los datos, entra en Ajustes y pulsa
+     «Exportar respaldo». Se descargará un archivo .json.
+  2. Envía ese archivo al otro dispositivo (correo, WhatsApp, USB…).
+  3. En el otro dispositivo, abre la app y usa «Importar datos» para
+     elegir ese archivo.
+
+Repite este proceso cuando quieras actualizar el otro dispositivo.
+No hay nube ni sincronización automática: es el precio de que todo sea
+privado y funcione sin internet.
+
+============================================================
+ 5. RESPALDOS
+============================================================
+
+  Ajustes → Tus datos → «Exportar respaldo»
+
+Se descarga un archivo llamado:
+
+    enfoque-escolar-respaldo-AAAA-MM-DD.json
+
+Guárdalo en un lugar seguro (Documentos, OneDrive, USB). Ese archivo
+sirve tanto para la versión web como para la de escritorio y contiene
+todo: entregas, horarios, actividades, sesiones, notas, ajustes y el
+estado del pomodoro.
+
+Para recuperarlo: Ajustes → «Importar datos» → elige el archivo.
+
+============================================================
+ 6. QUÉ PUEDES HACER EN LA APP
+============================================================
+
+  · Línea de tiempo con vistas Día, Semana y Mes.
+  · Entregas con fecha, hora, cuenta regresiva, notas y «todo el día».
+  · Horarios fijos que se repiten cada semana y dan color a cada
+    asignatura.
+  · Actividades sueltas de un día concreto (asesorías, trámites…).
+  · Pendientes generales en notas adhesivas que puedes arrastrar,
+    con lista de tareas y casillas para marcar.
+  · Pomodoro con enfoque, descansos cortos y largos, inicio automático
+    opcional, sonido y notificaciones.
+  · Resumen con tiempo de trabajo, descansos, sesiones, gráfico por
+    día, desglose por tarea y asignatura, e historial.
+  · Tema oscuro (galaxia) y tema claro (amanecer), con estrellas que
+    se mueven lentamente sin parpadear.
+  · Exportar e importar respaldos.
+  · Funciona sin conexión después de la primera visita.
+
+Atajos útiles:
+  · Ctrl + N: nueva entrega.
+  · Esc: cerrar una ventana.
+
+============================================================
+ 7. PREGUNTAS FRECUENTES
+============================================================
+
+¿Necesito internet para usarla?
+  Solo la primera vez que la abres desde una dirección https:// o
+  localhost, para que el navegador la guarde. Después funciona sin
+  conexión. La versión publicada en Netlify también carga sin conexión
+  tras la primera visita.
+
+¿Mis datos se suben a internet?
+  No. La app no envía datos a ningún servidor. Todo se guarda en el
+  almacenamiento local del navegador. Publicar la carpeta solo sube
+  los archivos de la aplicación, nunca tus datos.
+
+¿Por qué no se instala en el iPhone desde localhost?
+  Porque el iPhone no puede acceder al localhost de tu ordenador y
+  Safari exige una dirección https:// para «Añadir a pantalla de
+  inicio». Publica la carpeta en Netlify Drop (gratis) y usa esa
+  dirección.
+
+¿Puedo usar la versión web sin publicarla?
+  Sí, en Windows con servir.ps1 o abriendo index.html. Para Android e
+  iPhone necesitas publicarla.
+
+¿Qué pasa si borro los datos del navegador?
+  Se borran las entregas, horarios, notas y sesiones de ese
+  dispositivo. Por eso conviene exportar un respaldo de vez en cuando.
+  También puedes perder los datos si usas el modo incógnito.
+
+¿Puedo mover la carpeta a otro sitio?
+  Sí, mientras estén todos los archivos juntos. Si usas servir.ps1,
+  ejecútalo desde la nueva ubicación.
+
+¿La app de escritorio sigue funcionando?
+  Sí. Es independiente. Puedes usar una, la otra o ambas. Para pasar
+  datos de una a otra, usa Exportar/Importar.
+
+============================================================
+ 8. SI ALGO NO FUNCIONA
+============================================================
+
+· La página se ve sin estilos o sin iconos:
+  Asegúrate de que styles.css, app.js y la carpeta icons están junto a
+  index.html, con los mismos nombres.
+
+· El servidor local dice que el puerto está ocupado:
+  Usa otro puerto:
+      powershell -ExecutionPolicy Bypass -File .\servir.ps1 -Port 8090
+  y abre http://localhost:8090
+
+· No aparece el botón «Instalar»:
+  Debe ser Chrome o Edge, y la app debe abrirse desde http://localhost
+  o https://. Si ya está instalada, el botón desaparece.
+
+· En iPhone no aparece «Añadir a pantalla de inicio»:
+  Confirma que estás en Safari y que la dirección empieza por https://.
+
+· Importé datos y no veo mis horarios:
+  Revisa que el archivo sea datos.json (no un archivo .txt) y que la
+  importación haya mostrado el resumen con los números correctos.
+  Si el archivo está dañado, la app avisará y no reemplazará nada.
+
+· Quiero empezar de cero:
+  Ajustes → Mantenimiento → «Borrar todos mis datos». Exporta antes
+  un respaldo si quieres conservar algo.
+
+============================================================
+ Enfoque Escolar · versión web 1.0
+ Hecho para estudiar con calma, sin cuentas y sin distracciones.
+============================================================
